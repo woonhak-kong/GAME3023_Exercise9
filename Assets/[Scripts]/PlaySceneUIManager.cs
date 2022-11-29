@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlaySceneUIManager : MonoBehaviour
 {
     public GameObject Player;
+
+    public GameObject TransitionObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +29,14 @@ public class PlaySceneUIManager : MonoBehaviour
         PlayerData data = SaveLoadManager.LoadPlayer();
         Vector2 savedPosition = new Vector2(data.position[0], data.position[1]);
         Player.transform.position = savedPosition;
+    }
+
+    public void PlayTransitionIn()
+    {
+        TransitionObject.GetComponent<Animator>().Play("transition");
+    }
+    public void PlayTransitionOut()
+    {
+        TransitionObject.GetComponent<Animator>().Play("transition3");
     }
 }

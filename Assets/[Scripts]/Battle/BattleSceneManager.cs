@@ -18,7 +18,13 @@ public class BattleSceneManager : MonoBehaviour
 
     public GameObject SkillButtonPrefab;
 
+    public GameObject Transition;
 
+
+    private void Start()
+    {
+        Transition.GetComponent<Animator>().Play("transition2");
+    }
     public void SetTurn(Turn turn)
     {
         switch(turn)
@@ -51,6 +57,7 @@ public class BattleSceneManager : MonoBehaviour
 
     public void UnLoadScene()
     {
+        FindObjectOfType<PlaySceneUIManager>().PlayTransitionOut();
         SoundManager.Instance.PlayBgm("PlayScene", 2.0f);
         SceneManager.UnloadScene("BattleScene");
     }
